@@ -1,0 +1,38 @@
+.header{
+    /* background: #800080; */
+    height: 80px;
+}
+
+.sidenav{
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 100;
+    left: 0;
+    /* background-color: #800080; */
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 6px 6px 6px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: black;
+}
+
+.body {
+    margin-left: 200px; /* Same as the width of the sidenav */
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+  
