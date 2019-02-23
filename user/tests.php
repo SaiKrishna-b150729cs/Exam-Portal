@@ -33,9 +33,8 @@
                      "<td>".$test['marks']."</td>".
                      "<td>".date("Y/m/d", strtotime($test['date_added']))."</td>".
                      "<td>
-                        <a href='take_test.php?test_id=".$test['test_id']."' style='text-decoration:none; color: white;' class='btn btn-warning mr-3'>
-                        Start
-                        <i class='far fa-share-square'></i>
+                        <a href='take_test.php?test_id=".$test['test_id']."' style='text-decoration:none;' class='btn btn-warning mr-3 text-white'>
+                            Start<i class='far fa-share-square'></i>
                         </a>
                      </td>";
                 echo "</tr>";

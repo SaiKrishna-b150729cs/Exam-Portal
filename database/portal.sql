@@ -85,7 +85,7 @@ ENGINE = InnoDB;
 -- Table `portal`.`user_tests`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `portal`.`user_tests` (
-  `sess_id` INT NOT NULL AUTO_INCREMENT,
+  `sess_id` VARCHAR(30) NOT NULL ,
   `user_id` INT NOT NULL,
   `test_id` INT NOT NULL,
   `score` INT NULL,
@@ -114,7 +114,7 @@ ENGINE = InnoDB;
 -- Table `portal`.`user_answers`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `portal`.`user_answers` (
-  `sess_id` INT NOT NULL,
+  `sess_id` VARCHAR(30) NOT NULL,
   `ans_entered` VARCHAR(45) NULL,
   `que_id` INT NOT NULL,
   `test_id` INT NOT NULL,

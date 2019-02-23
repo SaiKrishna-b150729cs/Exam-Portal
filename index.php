@@ -55,16 +55,22 @@
             include("dbConnection.php");
             $email = $_POST['login_email'];
             $pass = md5($_POST['login_pass']);
+
+
+
             if(isset($_POST['admin_chk'])){
                 $sql = "SELECT * FROM admin WHERE email='$email' AND password='$pass'";
                 $result=$conn->query($sql);
-                if($result->num_rows == 1){
+                // echo $result;
+                if($result->num_rows >= 1){
                     $row = $result->fetch_assoc();
                     $_SESSION["admin"] = $email;
+                   
+                    echo "<script> console.log('Logged in as admin)  </script>";            
                     header("location: admin/admin.php");
                 }
                 else{
-                    echo "<script>alert('You don\'t have admin access); </script>";
+                    echo "<script>alert('You don\'t have admin access'); </script>";
                 }
             }
             else{
@@ -103,9 +109,9 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="POST" name="login_form" onSubmit="return validatesigninForm()">
+                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" name="login_form" onSubmit="return validatesigninForm()">
                             <div class="form-group">
-                                <label for="login_email">Email</label>
+                                <label for="login_email">Email:</label>
                                 <input type="email" id="login_email" name="login_email" class="form-control" placeholder="Enter Email id" autofocus>
                             </div>
                             <div class="form-group">

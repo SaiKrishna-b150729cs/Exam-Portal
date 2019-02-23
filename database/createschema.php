@@ -1,6 +1,6 @@
 <?php
 
-include("dbConnection.php");
+include("../dbConnection.php");
 
 $sql ="CREATE  SCHEMA IF NOT EXISTS `portal` DEFAULT CHARACTER SET utf8 ";
 $conn->query($sql);
@@ -33,6 +33,8 @@ $sql = "CREATE TABLE IF NOT EXISTS `portal`.`test` (
     `test_name` VARCHAR(45) NOT NULL,
     `duration` INT NOT NULL,
     `ques_count` INT NULL,
+    `marks` INT NULL,    
+    `date_added` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (`test_id`))
   ENGINE = InnoDB";
 $conn->query($sql);
@@ -59,7 +61,7 @@ $sql = "CREATE TABLE IF NOT EXISTS `portal`.`questions` (
 $conn->query($sql);
 
 $sql = "CREATE TABLE IF NOT EXISTS `portal`.`user_tests` (
-    `sess_id` INT NOT NULL AUTO_INCREMENT,
+    `sess_id` VARCHAR(30) NOT NULL,
     `user_id` INT NOT NULL,
     `test_id` INT NOT NULL,
     `score` INT NULL,
@@ -85,7 +87,7 @@ $sql = "CREATE TABLE IF NOT EXISTS `portal`.`user_tests` (
 $conn->query($sql);
 
 $sql = "CREATE TABLE IF NOT EXISTS `portal`.`user_answers` (
-    `sess_id` INT NOT NULL,
+    `sess_id` VARCHAR(30) NOT NULL,
     `ans_entered` VARCHAR(45) NULL,
     `que_id` INT NOT NULL,
     `test_id` INT NOT NULL,
