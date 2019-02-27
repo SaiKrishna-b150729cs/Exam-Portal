@@ -54,7 +54,7 @@
 
         }
         else{
-            header('location: user.php');
+            header('location: tests.php');
         }
     ?>
 

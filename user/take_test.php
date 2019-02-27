@@ -16,7 +16,7 @@
             $sess_id = $_SESSION['sess_id'];
         }
         else{
-            header("location: user.php");
+            header("location: tests.php");
         }
         $err= "";
         $ques = [];

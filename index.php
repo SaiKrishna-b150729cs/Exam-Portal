@@ -22,7 +22,7 @@
     <?php
         session_start();
         if(isset($_SESSION['email'])){
-            header("location: user/user.php");
+            header("location: user/tests.php");
         }
         if(isset($_SESSION['admin'])){
             header("location: admin/admin.php");
@@ -45,7 +45,7 @@
             if ($return) {
                 $_SESSION['email'] = $email;
                 $_SESSION['name']= $name;
-                header("location: user/user.php");
+                header("location: user/tests.php");
             }
             else{
                 echo "<script type='text/javascript'>alert('Email already registered');</script>";
@@ -80,7 +80,7 @@
                     $row = $result->fetch_assoc();
                     $_SESSION["email"] = $email;
                     $_SESSION['name'] = $row['name'];
-                    header("location: user/user.php");
+                    header("location: user/tests.php");
                 }
                 else{
                     echo "<script>alert('Wrong Password or email'); </script>";

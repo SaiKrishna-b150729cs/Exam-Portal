@@ -7,7 +7,7 @@ function validatesignupForm(){
     pass = form['password'].value
     cpass = form['cpassword'].value
     text = /^[A-Za-z ]+$/
-    mail = /^[A-Za-z0-9_. ]+@[A-Za-z]+.[A-Za-z]+$/
+    mail = /^[A-Za-z0-9_. ]+@[A-Za-z]+.[A-Za-z]+[.]?[A-Za-z]*$/
     if (name == null || name == "" || !name.match(text)){
         form.name.focus()
         alert( "Please provide Valid name!" );
