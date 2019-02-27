@@ -29,8 +29,8 @@
             header('location: ../index.php');
         }
     ?>
-    <div class="header">
-        <div class="row">
+    <div-- class="header">
+        <!--div class="row">
             <div class="col-lg-10">
                 <h3>NITC Exam Portal</h3>
             </div>
@@ -44,7 +44,23 @@
                     </div>
                 </div>
             </div>
+        </div-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand text-white" href="#">NITC Exam Portal</a>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav" style="margin-left:85%">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <?= $name ?>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item " href="#">Logout</a>
         </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
     </div>
 
     <div class="sidenav" id="sidenav">

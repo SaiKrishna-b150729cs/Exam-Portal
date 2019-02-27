@@ -24,7 +24,7 @@
                 $sess_id = bin2hex(random_bytes(12));
                 $_SESSION['test_id'] = $test_id;
                 $_SESSION['sess_id'] = $sess_id;
-                header('location: take_test.php');
+                header('location: instructions.php');
                 // exit();
             }
         }

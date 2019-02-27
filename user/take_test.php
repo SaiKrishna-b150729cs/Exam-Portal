@@ -65,6 +65,7 @@
             <div id="<?= $name ?>" style="display:none">
                 <span> <?= $i + 1?>. </span>
                 <span> <?= $ques[$i][0] ?> </span><br>
+                <span class="float-right mr-3"> Mark: <?= $ques[$i][6] ?></span>
                 
                 <div class="form-check">
                     <input type="radio" class="form-check-input" name="<?= $name ?>" id="<?= $name.'_1' ?>" value="1">    
