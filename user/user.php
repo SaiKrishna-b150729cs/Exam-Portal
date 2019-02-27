@@ -29,23 +29,25 @@
             header('location: ../index.php');
         }
     ?>
-    <div class="header">
-        <div class="row">
-            <div class="col-lg-10">
-                <h3>NITC Exam Portal</h3>
-            </div>
-            <div class="col-lg-2">
-                <div class="dropdown">
-                    <span class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-header text-white">
+            <h3>NITC Exam Portal</h3>
+        </a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav" style="margin-left:85%">
+                <li class="nav-item dropdown">
+                    
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown">
                         <?php echo $name; ?> 
-                    </span>
+                    </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="../logout.php"> Logout</a>
                     </div>
-                </div>
-            </div>
+                    
+                </li>
+            </ul>
         </div>
-    </div>
+    </nav>
 
     <div class="sidenav" id="sidenav">
         <a href="tests.php">View tests</a>
