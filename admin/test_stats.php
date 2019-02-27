@@ -21,18 +21,19 @@
             }
             $sql = "SELECT * FROM test WHERE test_id='$test_id' ";
             $test = $conn->query($sql);
-            if(!($test && $test->num_rows > 0)){
+            if(!($test && $test->num_rows > 0))
                 $err = "Test Not Found";
-            }
             else
-            $test = $test->fetch_assoc();
+                $test = $test->fetch_assoc();
         }
         else{
-            header("location: admin.php");
+            header("location: tests.php");
         }
     ?>
     <div class="body mr-4 mt-4">
-        <span class="font-weight-bold"> Test Name: <?= $test['test_name'] ?></span>
+        <span class="font-weight-bold"> Test Name: <?= $test['test_name'] ?></span><br>
+        <span class="font-weight-bold"> Total score: <?= $test['marks'] ?></span>
+
         <?php
             if($err != ""){
                 echo "<div class='text-center mx-auto'><h1>$err</h1></div>";
@@ -41,27 +42,47 @@
         ?>
             <table class="table table-bordered table-hover">
                 <tr>
-                    <th>User_id</th>
+                    <th>User</th>
                     <th>Score</th>
                     <th>Correct</th>
                     <th>Wrong</th>
                     <th>Time taken</th>
                     <th>Date</th>
                 </tr>
-                <?php while($stat = $stats->fetch_assoc()){ ?>
-                    <tr><?= $stat['user_id'] ?></tr>
-                    <tr><?= $stat['score'] ?></tr>
-                    <tr><?= $stat['correct'] ?></tr>
-                    <tr><?= $stat['wrong'] ?></tr>
-                    <tr><?= $test['duration'] -  $stat['time_rem']  ?></tr>
-                    <tr><?= date("Y/m/d", strtotime($stat['date']))?></tr>
-            </table>
-
-
+                <?php while($stat = $stats->fetch_assoc()){ 
+                    $user_id = $stat['user_id'];
+                    $sql = "SELECT * FROM USER WHERE user_id='$user_id'";
+                    $result = $conn->query($sql);
+                    $user_name = $result->fetch_assoc()['name'] 
+                    
+                ?>
+                    <tr>
+                    <td><?= $user_name ?></td>
+                    <td><?= $stat['score'] ?></td>
+                    <td><?= $stat['correct'] ?></td>
+                    <td><?= $stat['wrong'] ?></td>
+                    <td><?= timeConvert($test['duration'] * 60 -  $stat['time_rem'])  ?></td>
+                    <td><?= date("Y/m/d h:i", strtotime($stat['date']))?></td>
+                    </tr>
         <?php
                 }
             }
-        ?>
+
+            function timeConvert($d){
+                $d = (int)$d;
+                $h = (int)($d / 3600);
+                $m = (int)($d % 3600 / 60);
+                $s = (int)($d % 3600 % 60);
+                
+                $hDisplay = $h > 0 ? ($h >= 10 ? $h : "0". $h ) . ":" : "";
+                $mDisplay = ($m >= 10 ? $m : "0" . $m ) . ":";
+                $sDisplay = ($s >= 10 ? $s : "0" . $s );
+    
+                return $hDisplay . $mDisplay . $sDisplay;
+            }
+        ?>            
+            </table>
+
 
     </div>
 </body>

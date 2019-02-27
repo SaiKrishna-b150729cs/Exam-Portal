@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Tests List</title>
+    <title>Test</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -11,8 +11,9 @@
         include('user.php');
         include('../dbConnection.php');
         
-        if(isset($_GET['test_id'])){
-            $test_id = $_GET['test_id'];
+        if(isset($_SESSION['test_id']) && isset($_SESSION['sess_id'])){
+            $test_id = $_SESSION['test_id'];
+            $sess_id = $_SESSION['sess_id'];
         }
         else{
             header("location: user.php");
@@ -49,11 +50,11 @@
             <span class="float-right text-white mr-2">Time Remaining: </span>
         </div>
 
-        <form action="submit_test.php" method="post" name="submit_test_form">
+        <form action="submit_test.php" method="post" id="submit_test_form" name="submit_test_form">
         
             <input type="hidden" name="test_id" value="<?= $test_id ?>" >
-            <input type="hidden" name="date" value="<?= date("dmY h:i:s A") ?>">
-            <input type="hidden" name="time_rem" value=""> 
+            <input type="hidden" name="date" value="<?= date("Y-m-d h:i:s") ?>">
+            <input type="hidden" name="time_rem" value='0'> 
 
         <div id="ques">
             <?php
@@ -101,7 +102,7 @@
 
         <button type="button" class="btn" id="pre_btn" onclick="prevque()">Previous</button>
         <button type="button" class="btn" id="nxt_btn" onclick="nextque()">Next</button>
-        <button type="submit" name="submit_test" class="btn btn-success"> Submit</button>        
+        <button type="submit" id="submit_test" name="submit_test" class="btn btn-success" onclick="unhook()"> Submit</button>        
         </form>
     </div>
 
@@ -130,9 +131,21 @@
             secs_rem = secs_rem - 1;
             ele.innerHTML = timeConvert(secs_rem)
             ele2.value = secs_rem
-            // if(secs_rem == secs_rem - 0.2){
-            //     window.alert("Time remaining " + secs_rem)
-            // }
+            if(secs_rem == 300){
+                ele.classList.remove('text-white')
+                ele.classList.add('text-danger')
+
+                alert("Time remaining: 5 min " )
+            }
+            if(secs_rem <= 0){
+                alert("Test Ended");
+                console.log("Test Ended");
+                clearInterval(interval);
+                unhook();
+                btn = document.getElementById('submit_test')
+                btn.click()
+
+            }
         }, 1000);
 
         function nextque(){
@@ -155,6 +168,17 @@
             document.getElementById("que_" + que).style.display="block";
             
         }
+
+        hook = true
+        function unhook() {
+             hook = false;
+        }
+
+        window.onbeforeunload = function (e) {
+            if(hook)
+                return 'Changes will be lost?';
+        }
+
 
     </script>
 </body>
