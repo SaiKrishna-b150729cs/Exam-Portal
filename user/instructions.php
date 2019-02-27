@@ -16,9 +16,7 @@
     <div class="body mr-4 mt-4 align-middle">
         <h2 class="align-middle">Instructions</h2>
         <h6>1. Donot reload page in middle of test</h6>
-        <h6>2. </h6>
-        <h6>3. </h6>
-        <h6>4. Mobile phones and calculators are strictly prohibited</h6>
+        <h6>2. Mobile phones and calculators are strictly prohibited</h6>
 
         <button onclick="start()" class="btn btn-primary"> Start Test</button>
     </div>

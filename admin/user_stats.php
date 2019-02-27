@@ -73,7 +73,6 @@
                         </a>
                      </td>
                     </tr>
-            </table>
         <?php
                 }
             }
@@ -91,6 +90,7 @@
                 return $hDisplay . $mDisplay . $sDisplay;
             }
         ?>
+            </table>
 
     </div>
 </body>

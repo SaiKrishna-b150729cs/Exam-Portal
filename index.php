@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" 
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
@@ -88,17 +90,19 @@
             }
         }
     ?>
-    <div class="header">
-        <div class="row">
-        <div class="col-lg-11">
+    <div>
+        <div class="navbar navbar-dark navbar-fixed-top bg-dark">
+        <div class="navbar-header text-white">
             <h3>NITC Exam Portal</h3>
         </div>
-        <div class="col-lg-1">
-            <button class="btn btn-primary" id="signin_btn" data-toggle="modal" data-target="#signinmodal">
-                <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;
-                Signin
-            </button>
-        </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <button class="btn btn-primary" id="signin_btn" data-toggle="modal" data-target="#signinmodal">
+                        
+                        Signin<i class="fas fa-sign-in-alt"></i>
+                    </button>
+                </li>
+            </ul>
         <div class="modal fade" id="signinmodal" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -136,34 +140,51 @@
         </div>
         </div>
     </div>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" onSubmit="return validatesignupForm()" method="POST" name="register_form">
-        <div class="form-group">
-            <label for="name">Full Name: </label>
-            <input type="text"  id="name" name="name" placeholder="Enter Name" class="form-control" value="<?= $name; ?>" autofocus>
+    <div id="banner_image">
+    <div class="container" align="left">
+        <div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-md-6">
+                <div class="card bg-transparent">
+                    <div class="card-heading">
+                        <h4>Sign Up</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" onSubmit="return validatesignupForm()" method="POST" name="register_form">
+                            <div class="form-group">
+                                <label for="name">Full Name: </label>
+                                <input type="text"  id="name" name="name" placeholder="Enter Name" class="form-control" value="<?= $name; ?>" autofocus>
+                            </div>
+                            <div class="form-group">
+                                    <label for="email">Email:</label>
+                                    <input type="email"  id="email" name="email" placeholder="Email-id" class="form-control" value="<?= $email ?>">
+                            </div>
+                            <div class="form-group">
+                                    <label for="college">College:</label>
+                                    <input type="text"  id="college" name="college" placeholder="College" class="form-control" value="<?= $college ?>">    
+                            </div>
+                            <div class="form-group">
+                                    <label for="mobile">Mobile:</label>
+                                    <input type="text"  id="mobile" name="mobile" placeholder="Phone Number" class="form-control" maxlength="10" value="<?= $mobile ?>">    
+                            </div>
+                            <div class="form-group">
+                                    <label for="password">Password:</label>
+                                    <input type="password"  id="password" name="password" placeholder="Password" class="form-control">    
+                            </div>
+                            <div class="form-group">
+                                    <label for="cpassword">Confirm Password:</label>
+                                    <input type="password"  id="cpassword" name="cpassword" placeholder="Confirm Password" class="form-control">    
+                            </div>
+                            <center>
+                            <button type="submit" name ="reg"  class="btn btn-primary">Register</button>
+                            </center>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email"  id="email" name="email" placeholder="Email-id" class="form-control" value="<?= $email ?>">
-        </div>
-        <div class="form-group">
-                <label for="college">College:</label>
-                <input type="text"  id="college" name="college" placeholder="College" class="form-control" value="<?= $college ?>">    
-        </div>
-        <div class="form-group">
-                <label for="mobile">Mobile:</label>
-                <input type="text"  id="mobile" name="mobile" placeholder="Phone Number" class="form-control" maxlength="10" value="<?= $mobile ?>">    
-        </div>
-        <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password"  id="password" name="password" placeholder="Password" class="form-control">    
-        </div>
-        <div class="form-group">
-                <label for="cpassword">Confirm Password:</label>
-                <input type="password"  id="cpassword" name="cpassword" placeholder="Confirm Password" class="form-control">    
-        </div>
-        <button type="submit" name ="reg"  class="btn btn-primary">Register</button>
-
-    </form>
+    </div>
+    </div>
 </body>
 
 </html>
